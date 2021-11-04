@@ -108,7 +108,6 @@ $('#actualizarGarantia').on('submit',function(e) {
 		reverseButtons: true
 	}).then((result) => {
 		if (result.isConfirmed) {
-
 			$.ajax({
 				url:'actualizarGar',
 				data: formData,
