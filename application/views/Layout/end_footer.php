@@ -15,6 +15,7 @@
 
 
 
+
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url("resources/js/sb-admin-2.min.js");?>"></script>
 <script src="<?php echo base_url("resources/stacktable/stacktable.js");?>"></script>
