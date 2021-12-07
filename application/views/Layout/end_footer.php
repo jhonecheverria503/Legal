@@ -11,14 +11,10 @@
 <script src="<?php echo  base_url("resources/vendor/datatables/jquery.dataTables.js");?>"></script>
 <script src="<?php echo  base_url("resources/vendor/datatables/dataTables.bootstrap4.js");?>"></script>
 
-
-
-
-
-
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url("resources/js/sb-admin-2.min.js");?>"></script>
 <script src="<?php echo base_url("resources/stacktable/stacktable.js");?>"></script>
+<script src="<?php echo base_url("resources/mask/jquery.mask.js");?>"></script>
 
 <script type="text/javascript">
 	var t=null;
