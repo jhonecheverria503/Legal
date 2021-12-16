@@ -12,6 +12,7 @@ class Cartas extends CI_CONTROLLER
 		$this->load->helper("url");
 		$this->load->model("GestionPermiso_Model");
 		$this->load->model("Cartas_Model");
+		$this->load->model("Bitacora_Model");
 	}
 
 	public function index()
@@ -131,6 +132,14 @@ class Cartas extends CI_CONTROLLER
 			);
 
 			$res=$this->Cartas_Model->saveCliente($datoCliente);
+			$dataBitacora = array(
+					"idAccion" => 7,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." ingresó al cliente ".$nombre." en cartas de cobros",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 
@@ -189,6 +198,14 @@ class Cartas extends CI_CONTROLLER
 		}
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Cartas_Model->actualizarCliente($datoCliente,$where);
+		$dataBitacora = array(
+				"idAccion" => 7,
+				"descripcion" => "Usuario ".$_SESSION['usuario']." actualizó al cliente ".$nombre." en cartas de cobros",
+				"usuario" => $_SESSION['usuario'],
+				"dirIp"=>$_SERVER['REMOTE_ADDR'],
+				"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+		);
+		$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 	}
 
@@ -274,6 +291,15 @@ class Cartas extends CI_CONTROLLER
 		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"');
 		header('Cache-Control: max-age=0');
 
+		$dataBitacora = array(
+				"idAccion" => 7,
+				"descripcion" => "Usuario ".$_SESSION['usuario']." descargó carta de cobros del cliente ".$nombre,
+				"usuario" => $_SESSION['usuario'],
+				"dirIp"=>$_SERVER['REMOTE_ADDR'],
+				"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+		);
+		$this->Bitacora_Model->insertAccion($dataBitacora);
+
 		$writer->save('php://output');
 
 	}
@@ -321,89 +347,6 @@ class Cartas extends CI_CONTROLLER
 		return $hora;
 
 	}
-
-	public function getReporte()
-	{
-		$fechainicio=$this->input->post("FechaInicio");
-		$fechafin=$this->input->post("FechaFin");
-		$ccodofi=$this->input->post("oficina");
-		$res=$this->Resumen_Model->getInfo($fechainicio,$fechafin,$ccodofi);
-
-		if (COUNT($res)>0)
-		{
-			//Cargamos la librería de excel.
-			$this->load->library('excel'); $this->excel->setActiveSheetIndex(0);
-			$this->excel->getActiveSheet()->setTitle("Antorchas otorgadas");
-			//Contador de filas
-			$contador = 1;
-			$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(17);
-			$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
-			$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
-
-			//Le aplicamos negrita a los títulos de la cabecera.
-			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
-			$this->excel->getActiveSheet()->getStyle("B{$contador}")->getFont()->setBold(true);
-			$this->excel->getActiveSheet()->getStyle("C{$contador}")->getFont()->setBold(true);
-
-			//Le aplicamos color a los titulos.
-			$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
-			$this->excel->getActiveSheet()->getStyle("B{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
-			$this->excel->getActiveSheet()->getStyle("C{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
-
-
-			$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'Total Antorchas');
-			$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Empleado');
-			$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'Oficina');
-
-
-			foreach($res as $d){
-				//Incrementamos una fila más, para ir a la siguiente.
-				$contador++;
-				//Informacion de las filas de la consulta.
-				$this->excel->getActiveSheet()->setCellValue("A{$contador}", $d->estrellas);
-				$this->excel->getActiveSheet()->setCellValue("B{$contador}", $d->nombre);
-				$this->excel->getActiveSheet()->setCellValue("C{$contador}", $d->cnomofi);
-			}
-			$estiloTituloReporte = array(
-					'font' => array(
-							'name'      => 'Arial',
-							'bold'      => true,
-					),
-					'fill' => array(
-							'type'  => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb' => 'B0C8E0')
-					),
-					'borders' => array(
-							'allborders' => array(
-									'style' => PHPExcel_Style_Border::BORDER_THIN
-							)
-					),
-			);
-			$this->excel->getActiveSheet()->getStyle('A1:C1')->applyFromArray($estiloTituloReporte);
-			//Le ponemos un nombre al archivo que se va a generar.
-			$archivo = "TopAntorchas.xls";
-			header('Content-Type: application/vnd.ms-excel');
-			header('Content-Disposition: attachment;filename="'.$archivo.'"');
-			header('Cache-Control: max-age=0');
-			$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-			//Hacemos una salida al navegador con el archivo Excel.
-			$objWriter->save('php://output');
-			$dataBitacora = array(
-					"idAccion" => 7,
-					"descripcion" => "Usuario ".$_SESSION['usuario']." Genero reporte de antorchas desde el ".$fechainicio."hasta el ".$fechafin."de agencia ".$ccodofi,
-					"usuario" => $_SESSION['usuario'],
-					"dirIp"=>$_SERVER['REMOTE_ADDR'],
-					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
-			);
-			$this->Bitacora_Model->insertAccion($dataBitacora);
-		}
-		else{
-			echo '<script>alert("NO HAY DATOS PARA MOSTRAR");</script>';
-			echo "<script>window.close();</script>";
-			exit;
-		}
-	}
-
 
 
 }

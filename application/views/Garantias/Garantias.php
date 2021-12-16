@@ -14,12 +14,20 @@
 <div class="container navbar-light bg-light col-md-12">
 	<form action="" method="post">
 		<div class="row">
+			<?php
+			 if ($_SESSION["oficina"]=='004'){
+
+
+			?>
 			<div class="form-column col-md-7 col-sm-7 col-xs-7 col-lg-7">
 				<div class="form-inline">
 					<a class="navbar-brand">Referencia</a>
 					<input class="form-control col-md-9 col-sm-9 col-xs-9 col-lg-9" name="txtFind" id="txtFind" type="search" required="required" ">
 				</div>
 			</div>
+			<?php
+			 }
+			?>
 
 			<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 				<div class="form-group">
@@ -141,85 +149,17 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<?php
+					if ($_SESSION["oficina"]=="004")
+						{
+					?>
 					<input class='btn btn-success' type="submit" value="Añadir" id="btnNuevoProducto" name="btnNuevoProducto">
+					<?php
+						}
+					?>
 				</div>
 			</form>
 		</div>
-		</form>
-	</div>
-</div>
-<!--Actualizar Empleado-->
-<div class="modal fade" id="EditarEmpleadoModal" tabindex="-1" role="dialog" aria-labelledby="NuevoProductoModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="NuevoEmpleadoModalLabel">Editar Empleado</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<form action="" method="post" id="EditarEmpleadoForm" name="EditarEmpleadoForm">
-				<div class="modal-body">
-					<div class="row">
-						<div class="clearfix"></div>
-						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
-							<div class="form-group">
-								<label for="cliente" class="control-label">Nombre</label>
-								<input type="text" id="txtUNombre" name="txtUNombre" class="form-control" required>
-								<input type="hidden" id="txtId" name="txtId" class="form-control" required>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-column col-md-6 col-sm-6 col-xs-6 col-lg-6">
-							<div class="form-group">
-								<label for="cliente" class="control-label">USUARIO SIM</label>
-								<input type="text" id="txtUSIM" name="txtUSIM" class="form-control" onKeyup="this.value=this.value.toUpperCase()" required>
-							</div>
-						</div>
-						<div class="form-column col-md-6 col-sm-6 col-xs-6 col-lg-6">
-							<div class="form-group">
-								<label for="cliente" class="control-label">Agencia</label>
-								<select class="form-control categorias" id="txtUAgencia" name="txtUAgencia" required="required">
-									<option value="null">Seleccione...</option>
-								</select>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
-							<div class="form-group">
-								<label for="cliente" class="control-label">Correo</label>
-								<input type="email" id="txtUCorreo" name="txtUCorreo" class="form-control">
-							</div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
-							<div class="form-inline">
-								<label for="cliente" class="control-label">FOTO</label>
-								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="file" name="uploadFile" value="">
-									<label class="custom-file-label" for="customFile">Elegir Archivo...</label>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-column col-md-6">
-							<div class="form-group">
-								<br>
-								<label for="cliente" class="control-label">Estado</label>
-								<br>
-								<input type="checkbox" class='EstadoSujeto' id="chkUEstado" name="chkUEstado"><label>&ensp;Activo</label>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-					<input class='btn btn-danger ' type="submit" value="ACTUALIZAR" id="btnEditarEmpleado" name="btnEditarEmpleado">
-				</div>
-			</form>
-		</div>
-		</form>
 	</div>
 </div>
 </body>

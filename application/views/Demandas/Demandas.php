@@ -14,6 +14,9 @@
 	<form action="" method="post">
 		<div class="row">
 
+			<?php
+			if($_SESSION["oficina"]=="004"){
+			?>
 			<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
 				<div class="form-group">
 					<div>
@@ -24,6 +27,9 @@
 					</div>
 				</div>
 			</div>
+			<?php
+			}
+			?>
 
 			<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
 				<div class="form-inline">
@@ -173,7 +179,13 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<?php
+					if($_SESSION["oficina"]=="004"){
+					?>
 					<input class='btn btn-success' type="submit" value="Actualizar">
+					<?php
+					}
+					?>
 				</div>
 			</form>
 		</div>

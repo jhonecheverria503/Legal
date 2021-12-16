@@ -27,6 +27,10 @@ class Embargos_Model extends CI_Model
 		WHEN agencia='017' THEN 'CLINICA MEDICA'
 		END AS agencia,estado,Fecha");
 		$this->db->from("Bienes_Embargados");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("agencia",$_SESSION["oficina"]);
+		}
 		$this->db->like("Nombre",$nombre,"both");
 		$query=$this->db->get();
 		return $query->result();

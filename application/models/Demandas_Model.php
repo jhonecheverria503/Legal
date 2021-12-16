@@ -26,6 +26,10 @@ class Demandas_Model extends CI_MODEL
 		WHEN agencia='017' THEN 'CLINICA MEDICA'
 		END AS agencia,estado,Fecha");
 		$this->db->from("Demandas_DPC");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("agencia",$_SESSION["oficina"]);
+		}
 		$this->db->like("Nombre",$nombre,"both");
 		$query=$this->db->get();
 		return $query->result();

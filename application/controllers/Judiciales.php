@@ -8,6 +8,7 @@ class Judiciales extends CI_Controller
 		$this->load->helper("url");
 		$this->load->model("GestionPermiso_Model");
 		$this->load->model("Judiciales_Model");
+		$this->load->model("Bitacora_Model");
 	}
 
 	public function index()
@@ -117,6 +118,14 @@ class Judiciales extends CI_Controller
 			);
 
 			 $res=$this->Judiciales_Model->saveCliente($datoCliente);
+			$dataBitacora = array(
+					"idAccion" => 5,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." Ingresó al cliente ".$nombre." en procesos Judiciales",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			 echo $res;
 		}
 
@@ -159,6 +168,14 @@ class Judiciales extends CI_Controller
 			$where=array("id"=>$datos["txtid"]);
 
 			$res=$this->Judiciales_Model->actualizarCliente($datoCliente,$where);
+			$dataBitacora = array(
+					"idAccion" => 5,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." Actualizó al cliente ".$nombre." en procesos Judiciales.",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 

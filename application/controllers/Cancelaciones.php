@@ -8,6 +8,7 @@ class Cancelaciones extends CI_CONTROLLER
 		$this->load->helper("url");
 		$this->load->model("GestionPermiso_Model");
 		$this->load->model("Cancelaciones_Model");
+		$this->load->model("Bitacora_Model");
 	}
 
 	public function index()
@@ -122,6 +123,14 @@ class Cancelaciones extends CI_CONTROLLER
 			);
 
 			$res=$this->Cancelaciones_Model->saveCliente($datoCliente);
+			$dataBitacora = array(
+					"idAccion" => 6,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." ingresó al cliente ".$nombre." en cancelaciones de prenda",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 
@@ -165,6 +174,14 @@ class Cancelaciones extends CI_CONTROLLER
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Cancelaciones_Model->actualizarCliente($datoCliente,$where);
+			$dataBitacora = array(
+					"idAccion" => 6,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." actualizó al cliente ".$nombre." en cancelaciones de prenda",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 

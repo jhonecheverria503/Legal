@@ -25,6 +25,7 @@ date_default_timezone_set('America/El_Salvador');
 */
 
 $config['base_url'] = 'http://192.168.7.81:8080/Legal/';
+//$config['base_url'] = 'http://localhost:8080/Legal/';
 
 /*
 |--------------------------------------------------------------------------

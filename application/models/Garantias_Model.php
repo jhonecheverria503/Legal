@@ -36,6 +36,11 @@ class Garantias_Model extends CI_Model
 		$this->db->join("ASEIRTM.dbo.refGar AS r","r.Referencia=dg.Referencia");
 		$this->db->where("dg.Estado in('F','G')");
 		$this->db->where("r.estado",$estado);
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("dg.ccodofi",$_SESSION["oficina"]);
+
+		}
 		$query=$this->db->get();
 		return $query->result();
 
@@ -46,6 +51,11 @@ class Garantias_Model extends CI_Model
 	{
 		$this->db->select("dg.Referencia,dg.cnomcli,dg.Producto,dg.Linea,dg.Asesor,dg.Agencia");
 		$this->db->from("ASEIRTM.dbo.V_DFPC_General AS dg");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("dg.Referencia",$referencia);
+			$this->db->where("dg.ccodofi",$_SESSION["oficina"]);
+		}
 		$this->db->where("dg.Referencia",$referencia);
 		$query=$this->db->get();
 		return $query->result();

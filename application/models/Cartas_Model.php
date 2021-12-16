@@ -27,6 +27,10 @@ class Cartas_Model extends CI_MODEL
 		WHEN agencia='017' THEN 'CLINICA MEDICA'
 		END AS agencia,Grupo,Monto");
 		$this->db->from("Cartas_Cobro");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("agencia",$_SESSION["oficina"]);
+		}
 		$this->db->like("Nombre",$nombre,"both");
 		$query=$this->db->get();
 		return $query->result();
@@ -36,6 +40,10 @@ class Cartas_Model extends CI_MODEL
 	{
 		$this->db->select("t.ccodofi,t.cnomofi");
 		$this->db->from("ASEIRTM.dbo.tabtofi AS t");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("t.ccodofi",$_SESSION["oficina"]);
+		}
 		$this->db->where("t.ccodofi NOT IN('009','005')");
 		$query=$this->db->get();
 		return $query->result();

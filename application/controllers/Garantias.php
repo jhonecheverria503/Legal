@@ -9,6 +9,7 @@ class Garantias extends CI_Controller
 		$this->load->helper("url");
 		$this->load->model("Garantias_Model");
 		$this->load->model("GestionPermiso_Model");
+		$this->load->model("Bitacora_Model");
 
 	}
 
@@ -181,6 +182,14 @@ class Garantias extends CI_Controller
 				"estado"=>$datos["cbxEstado"]
 		);
 		$res=$this->Garantias_Model->actualizarGarantia($ActualizarGarantia,array("Referencia"=>$Referencia));
+		$dataBitacora = array(
+				"idAccion" => 4,
+				"descripcion" => "Usuario ".$_SESSION['usuario']." Actualizo la garantia ".$Referencia." a estado ".$datos["cbxEstado"].".",
+				"usuario" => $_SESSION['usuario'],
+				"dirIp"=>$_SERVER['REMOTE_ADDR'],
+				"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+		);
+		$this->Bitacora_Model->insertAccion($dataBitacora);
 		echo $res;
 	}
 }

@@ -8,6 +8,7 @@ class Laborales extends CI_Controller
 		$this->load->helper("url");
 		$this->load->model("GestionPermiso_Model");
 		$this->load->model("Laborales_Model");
+		$this->load->model("Bitacora_Model");
 	}
 
 	public function index()
@@ -115,6 +116,14 @@ class Laborales extends CI_Controller
 			);
 
 			$res=$this->Laborales_Model->saveCliente($datoCliente);
+			$dataBitacora = array(
+					"idAccion" => 5,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." ingresó al cliente ".$nombre." en procesos laborales",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 
@@ -175,6 +184,14 @@ class Laborales extends CI_Controller
 			$where=array("id"=>$datos["txtid"]);
 
 			$res=$this->Laborales_Model->actualizarCliente($datoCliente,$where);
+			$dataBitacora = array(
+					"idAccion" => 5,
+					"descripcion" => "Usuario ".$_SESSION['usuario']." actualizó al cliente ".$nombre." en procesos laborales",
+					"usuario" => $_SESSION['usuario'],
+					"dirIp"=>$_SERVER['REMOTE_ADDR'],
+					"nomMaquina"=>gethostbyaddr($_SERVER['REMOTE_ADDR'])
+			);
+			$this->Bitacora_Model->insertAccion($dataBitacora);
 			echo $res;
 		}
 

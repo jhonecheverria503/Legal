@@ -211,18 +211,18 @@
 							</div>
 						</div>
 						<?php
-							if($_SESSION["oficina"]=="004"){
+						if($_SESSION["oficina"]=="004"){
 
-						?>
-						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
-							<div class="form-group">
-								<label for="cliente" class="control-label">Fecha Dación</label>
-								<input type="datetime-local" id="txtfecha" name="txtfecha" class="form-control">
+							?>
+							<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
+								<div class="form-group">
+									<label for="cliente" class="control-label">Fecha Citación</label>
+									<input type="datetime-local" id="txtfecha" name="txtfecha" class="form-control">
+								</div>
 							</div>
-						</div>
 
-						<?php
-							}
+							<?php
+						}
 						?>
 						<div class="clearfix"></div>
 					</div>

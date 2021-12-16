@@ -37,6 +37,10 @@ class Laborales_Model extends CI_Model
 		WHEN agencia='017' THEN 'CLINICA MEDICA'
 		END AS agencia,estado,FechaDemanda");
 		$this->db->from("Procesos_Laborales");
+		if ($_SESSION["oficina"]!="004")
+		{
+			$this->db->where("agencia",$_SESSION["oficina"]);
+		}
 		$this->db->like("Demandante",$nombre,"both");
 		$query=$this->db->get();
 		return $query->result();
