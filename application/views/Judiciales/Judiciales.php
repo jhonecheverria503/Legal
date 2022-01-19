@@ -100,8 +100,12 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Notificacion">Notificacion</option>
+									<option value="Finalizado">Finalizado</option>
+									<option value="Inactivo">Inactivo</option>
+									<option value="Arreglo">Arreglo Extrajudicial</option>
 								</select>
 							</div>
 						</div>
@@ -181,8 +185,13 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="0">Seleccione...</option>
+									<option value="Proceso">Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Notificacion">Notificacion</option>
+									<option value="Finalizado">Finalizado</option>
+									<option value="Inactivo">Inactivo</option>
+									<option value="Arreglo">Arreglo Extrajudicial</option>
 								</select>
 							</div>
 						</div>
@@ -199,14 +208,11 @@
 							</div>
 						</div>
 						<div class="clearfix"></div>
-						<div class="form-column col-md-6 col-sm-6 col-xs-6 col-lg-6">
+						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
 							<label for="cliente" class="control-label">Observaciones</label>
 							<textarea class="form-control" id="txtUObservaciones" rows="5" name="txtUObservaciones" style="overflow:auto;resize:none"></textarea>
 						</div>
-						<div class="form-column col-md-6 col-sm-6 col-xs-6 col-lg-6">
-							<label for="cliente" class="control-label">Bitacora</label>
-							<textarea class="form-control" id="txtUBitacora" rows="5" name="txtUBitacora" style="overflow:auto;resize:none"></textarea>
-						</div>
+
 						<div class="clearfix"></div>
 					</div>
 				</div>

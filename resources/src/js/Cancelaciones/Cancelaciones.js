@@ -81,7 +81,7 @@ $(document).on('click', '.edit', function() {
 
 		.done(function (output) {
 			var datos = JSON.parse(output);
-			console.log(datos);
+
 			$('#txtid').val(datos[0].id);
 			$('#txtUNombre').val(datos[0].Nombre);
 			$('#txtUPlaca').val(datos[0].Placa);
@@ -92,6 +92,7 @@ $(document).on('click', '.edit', function() {
 			$("#cmbUestado option[value='"+ datos[0].Estado +"']").attr("selected",true);
 			$("#cmbUTramite option[value='"+ datos[0].EstadoTramite +"']").attr("selected",true);
 			$('#txtUObservaciones').val(datos[0].Observaciones);
+			$('#txtUFinalizacion').val(datos[0].finalizacionTramite);
 			$('#EditarClienteModal').modal('show');
 		});
 });

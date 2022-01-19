@@ -64,7 +64,7 @@ class Cancelaciones_Model extends CI_MODEL
 	}
 
 	public function ObtenerCliente($id){
-		$this->db->select("p.id,p.Nombre,p.FecOtor ,p.Placa,p.FechaLegal,p.NumeroPresentacion,p.FechaCancelacion,p.Estado,p.EstadoTramite,p.Agencia,p.Observaciones");
+		$this->db->select("p.id,p.Nombre,p.FecOtor ,p.Placa,p.FechaLegal,p.NumeroPresentacion,p.FechaCancelacion,p.Estado,p.EstadoTramite,p.Agencia,p.Observaciones,p.finalizacionTramite");
 		$this->db->from("Cancelaciones_Prenda AS p");
 		$this->db->where("id",$id);
 		$query=$this->db->get();

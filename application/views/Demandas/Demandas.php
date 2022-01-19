@@ -58,13 +58,12 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="clearfix"></div>
-						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
+						<div class="form-column col-md-8 col-sm-8 col-xs-8 col-lg-8">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Nombre</label>
 								<input type="text" id="txtNombre" name="txtNombre" class="form-control" required>
 							</div>
 						</div>
-						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Agencia</label>
@@ -81,6 +80,7 @@
 								</select>
 							</div>
 						</div>
+						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
@@ -93,9 +93,16 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Contestacion">Contestacion de denuncia</option>
+									<option value="Audiencia">Audiencia Conciliatoria</option>
+									<option value="Resolucion">Resolucion</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
+							<div class="form-group">
+								<label for="cliente" class="control-label">Referencia del caso</label>
+								<input type="text" id="txtReferencia" name="txtReferencia" class="form-control" required>
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -128,14 +135,14 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="clearfix"></div>
-						<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
+						<div class="form-column col-md-8 col-sm-8 col-xs-8 col-lg-8">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Nombre</label>
 								<input type="text" id="txtUNombre" name="txtUNombre" class="form-control" required>
 								<input type="hidden" id="txtid" name="txtid" class="form-control">
 							</div>
 						</div>
-						<div class="clearfix"></div>
+
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Agencia</label>
@@ -152,6 +159,7 @@
 								</select>
 							</div>
 						</div>
+						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
@@ -164,9 +172,16 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Contestacion">Contestacion de denuncia</option>
+									<option value="Audiencia">Audiencia Conciliatoria</option>
+									<option value="Resolucion">Resolucion</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
+							<div class="form-group">
+								<label for="cliente" class="control-label">Referencia del caso</label>
+								<input type="text" id="txtUReferencia" name="txtUReferencia" class="form-control" required>
 							</div>
 						</div>
 						<div class="clearfix"></div>

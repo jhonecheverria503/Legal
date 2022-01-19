@@ -40,7 +40,7 @@ class ReportesPeH extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Cancelaciones de Prenda: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Judiciales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:K1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:L1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -63,9 +63,8 @@ class ReportesPeH extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($estiloTituloReporte);
-					$this->excel->getActiveSheet()->getStyle('A2:K2')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:K1');
+					$this->excel->getActiveSheet()->getStyle('A1:L1')->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:L1');
 
 					//Contador de filas
 					$contador = 2;
@@ -80,6 +79,7 @@ class ReportesPeH extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
 					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
+					$this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(40);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -93,6 +93,7 @@ class ReportesPeH extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("K{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("L{$contador}")->getFont()->setBold(true);
 
 					//Le aplicamos color a los titulos.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
@@ -106,19 +107,21 @@ class ReportesPeH extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 					$this->excel->getActiveSheet()->getStyle("K{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
+					$this->excel->getActiveSheet()->getStyle("L{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
-					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
-					$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'Placa');
-					$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'Numero Presentacion');
-					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Fecha Otorgamiento');
-					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Fecha Legal');
-					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Fecha Cancelacion');
-					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Estado');
-					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Oficina');
-					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Estado Tramite');
-					$this->excel->getActiveSheet()->setCellValue("K{$contador}", 'Observaciones');
+					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'NOMBRE DE CLIENTE');
+					$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'PLACA DEL VEHICULO');
+					$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'NUMERO DE PRESENTACION');
+					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'FECHA DE OTORGAMIENTO DE CRÉDITO');
+					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'FECHA DE INGRESO EN AREA LEGAL');
+					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'FECHA DE CANCELACIÓN DEL CRÉDITO');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'ESTADO DEL TRAMITE');
+					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'OFICINA');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'ESTADO FINALIZACION TRAMITE');
+					$this->excel->getActiveSheet()->setCellValue("K{$contador}", 'OBSERVACIONES');
+					$this->excel->getActiveSheet()->setCellValue("L{$contador}", 'FECHA FINALIZACION');
 
 
 					foreach($res as $d){
@@ -136,6 +139,7 @@ class ReportesPeH extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->EstadoTramite);
 						$this->excel->getActiveSheet()->setCellValue("K{$contador}", $d->Observaciones);
+						$this->excel->getActiveSheet()->setCellValue("L{$contador}", $d->finalizacionTramite);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -144,7 +148,7 @@ class ReportesPeH extends CI_CONTROLLER
 						),
 						'fill' => array(
 							'type'  => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb' => 'B0C8E0')
+							'color' => array('rgb' => 'FFCCFF')
 						),
 						'borders' => array(
 							'allborders' => array(
@@ -152,7 +156,7 @@ class ReportesPeH extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:L2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "Cancelaciones_Prendas.xls";
 					header('Content-Type: application/vnd.ms-excel');
@@ -282,7 +286,7 @@ class ReportesPeH extends CI_CONTROLLER
 						),
 						'fill' => array(
 							'type'  => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb' => 'B0C8E0')
+							'color' => array('rgb' => 'FFCCFF')
 						),
 						'borders' => array(
 							'allborders' => array(
@@ -290,7 +294,7 @@ class ReportesPeH extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A1:K1')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:K2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "Cancelaciones_Hipotecas.xls";
 					header('Content-Type: application/vnd.ms-excel');

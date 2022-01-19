@@ -114,6 +114,7 @@ class Judiciales extends CI_Controller
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
+				'Correlativo_juzgado'=>$correlativo,
 				'Monto'=>$monto
 			);
 
@@ -142,7 +143,6 @@ class Judiciales extends CI_Controller
 		$monto=$datos["txtUMonto"];
 		$correlativo=$datos["txtUCorrelativo"];
 		$Observaciones=$datos["txtUObservaciones"];
-		$Bitacora=$datos["txtUBitacora"];
 
 		if ($estado=="0" or $agencia=="0"){
 
@@ -162,7 +162,6 @@ class Judiciales extends CI_Controller
 					'Estado'=>$estado,
 					'Observaciones'=>$Observaciones,
 					'Monto'=>$monto,
-					'Bitacora'=>$Bitacora,
 					'Correlativo_Juzgado'=>$correlativo
 			);
 			$where=array("id"=>$datos["txtid"]);

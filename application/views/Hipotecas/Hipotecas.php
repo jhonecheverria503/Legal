@@ -91,8 +91,9 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">En Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Inscrita">Inscrita</option>
 								</select>
 							</div>
 						</div>
@@ -198,8 +199,9 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">En Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Inscrita">Inscrita</option>
 								</select>
 							</div>
 						</div>
@@ -260,7 +262,6 @@
 				</div>
 			</form>
 		</div>
-		</form>
 	</div>
 </div>
 

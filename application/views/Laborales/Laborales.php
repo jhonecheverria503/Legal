@@ -96,11 +96,14 @@
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Estados</label>
+								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Finalizada">Finalizada</option>
+									<option value="Inactivo">Inactivo</option>
+									<option value="Auditoria">En Auditoria</option>
 								</select>
 							</div>
 						</div>
@@ -168,8 +171,11 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Finalizada">Finalizada</option>
+									<option value="Inactivo">Inactivo</option>
+									<option value="Auditoria">En Auditoria</option>
 								</select>
 							</div>
 						</div>

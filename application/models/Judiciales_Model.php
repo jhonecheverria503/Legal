@@ -66,7 +66,7 @@ class Judiciales_Model extends CI_Model
 	}
 
 	public function ObtenerCliente($id){
-		$this->db->select("p.id,p.nombreCli,p.Juzgado,p.Estado,p.Monto,p.Correlativo_juzgado,p.Observaciones,p.FechaDemanda,p.Bitacora");
+		$this->db->select("p.id,p.nombreCli,p.Juzgado,p.Estado,p.Monto,p.Correlativo_juzgado,p.Observaciones,p.FechaDemanda");
 		$this->db->from("Procesos_Judiciales AS p");
 		$this->db->where("id",$id);
 		$query=$this->db->get();

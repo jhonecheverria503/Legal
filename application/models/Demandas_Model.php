@@ -64,7 +64,7 @@ class Demandas_Model extends CI_MODEL
 	}
 
 	public function ObtenerCliente($id){
-		$this->db->select("p.id,p.Nombre,p.Estado,p.Observaciones,p.Fecha");
+		$this->db->select("p.id,p.Nombre,p.Estado,p.Observaciones,p.Fecha,ReferenciaCaso");
 		$this->db->from("Demandas_DPC AS p");
 		$this->db->where("id",$id);
 		$query=$this->db->get();

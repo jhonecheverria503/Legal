@@ -87,6 +87,7 @@ $(document).on('click', '.edit', function() {
 			$('#txtUfecha').val(datos[0].Fecha);
 			$("#cmbUestado option[value='"+ datos[0].Estado +"']").attr("selected",true);
 			$('#txtUObservaciones').val(datos[0].Observaciones);
+			$('#txtUReferencia').val(datos[0].ReferenciaCaso);
 			$('#EditarClienteModal').modal('show');
 		});
 });

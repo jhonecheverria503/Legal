@@ -93,6 +93,8 @@ class Demandas extends CI_CONTROLLER
 		$fecha=$datos["txtfecha"];
 		$estado=$datos["cmbestado"];
 		$Observaciones=$datos["txtObservaciones"];
+		$referencia=$datos["txtReferencia"];
+
 
 		if ($estado=="0" or $agencia=="0"){
 
@@ -109,7 +111,8 @@ class Demandas extends CI_CONTROLLER
 				'Fecha'=>date("d-m-Y H:i:s ",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
-				'Observaciones'=>$Observaciones
+				'Observaciones'=>$Observaciones,
+				'ReferenciaCaso'=>$referencia,
 			);
 
 			$res=$this->Demandas_Model->saveCliente($datoCliente);
@@ -134,6 +137,7 @@ class Demandas extends CI_CONTROLLER
 		$fecha=$datos["txtUfecha"];
 		$estado=$datos["cmbUestado"];
 		$Observaciones=$datos["txtUObservaciones"];
+		$referencia=$datos["txtUReferencia"];
 
 		if ($estado=="0" or $agencia=="0"){
 
@@ -150,7 +154,8 @@ class Demandas extends CI_CONTROLLER
 				'Fecha'=>date("d-m-Y H:i:s ",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
-				'Observaciones'=>$Observaciones
+				'Observaciones'=>$Observaciones,
+				"ReferenciaCaso"=>$referencia
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Demandas_Model->actualizarCliente($datoCliente,$where);

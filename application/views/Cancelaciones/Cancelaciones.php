@@ -91,8 +91,9 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">En Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Inscrita">Inscrita</option>
 								</select>
 							</div>
 						</div>
@@ -131,6 +132,12 @@
 									<option value="Cliente">Entregado a Cliente</option>
 									<option value="Agencia">Entregado a la Agencia</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
+							<div class="form-group">
+								<label for="cliente" class="control-label">Finalizacion del Tramite</label>
+								<input type="date" id="txtFinalizacion" name="txtFinalizacion" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -199,8 +206,9 @@
 								<label for="cliente" class="control-label">Estado</label>
 								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
 									<option value="0">Seleccione...</option>
-									<option value="ACTIVO">ACTIVO</option>
-									<option value="INACTIVO">INACTIVO</option>
+									<option value="Proceso">En Proceso</option>
+									<option value="Observada">Observada</option>
+									<option value="Inscrita">Inscrita</option>
 								</select>
 							</div>
 						</div>
@@ -239,6 +247,12 @@
 									<option value="Cliente">Entregado a Cliente</option>
 									<option value="Agencia">Entregado a la Agencia</option>
 								</select>
+							</div>
+						</div>
+						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
+							<div class="form-group">
+								<label for="cliente" class="control-label">Finalizacion del Tramite</label>
+								<input type="date" id="txtUFinalizacion" name="txtUFinalizacion" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>

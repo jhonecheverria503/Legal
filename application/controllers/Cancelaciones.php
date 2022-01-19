@@ -97,6 +97,7 @@ class Cancelaciones extends CI_CONTROLLER
 		$fechaLegal=$datos["txtfechaLegal"];
 		$presentacion=$datos["txtpresentacion"];
 		$tramite=$datos["cmbTramite"];
+		$finalizacion=$datos["txtFinalizacion"];
 		$Observaciones=$datos["txtObservaciones"];
 
 		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
@@ -119,7 +120,8 @@ class Cancelaciones extends CI_CONTROLLER
 					'Estado'=>$estado,
 					'EstadoTramite'=>$tramite,
 					'Agencia'=>$agencia,
-					'Observaciones'=>$Observaciones
+					'Observaciones'=>$Observaciones,
+					'finalizacionTramite'=>$finalizacion
 			);
 
 			$res=$this->Cancelaciones_Model->saveCliente($datoCliente);
@@ -149,6 +151,7 @@ class Cancelaciones extends CI_CONTROLLER
 		$fechaLegal=$datos["txtUfechaLegal"];
 		$presentacion=$datos["txtUpresentacion"];
 		$tramite=$datos["cmbUTramite"];
+		$finalizacion=$datos["txtUFinalizacion"];
 		$Observaciones=$datos["txtUObservaciones"];
 
 		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
@@ -170,7 +173,8 @@ class Cancelaciones extends CI_CONTROLLER
 					'Estado'=>$estado,
 					'EstadoTramite'=>$tramite,
 					'Agencia'=>$agencia,
-					'Observaciones'=>$Observaciones
+					'Observaciones'=>$Observaciones,
+					'finalizacionTramite'=>$finalizacion,
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Cancelaciones_Model->actualizarCliente($datoCliente,$where);

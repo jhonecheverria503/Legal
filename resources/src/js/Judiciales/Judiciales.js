@@ -87,7 +87,6 @@ $(document).on('click', '.edit', function() {
 			$("#cmbUestado option[value='"+ datos[0].Estado +"']").attr("selected",true);
 			$('#txtUMonto').val(datos[0].Monto);
 			$('#txtUCorrelativo').val(datos[0].Correlativo_juzgado);
-			$('#txtUBitacora').val(datos[0].Bitacora);
 			$('#txtUObservaciones').val(datos[0].Observaciones);
 			$('#EditarClienteModal').modal('show');
 		});
