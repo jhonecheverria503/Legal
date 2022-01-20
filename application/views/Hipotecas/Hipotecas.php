@@ -82,14 +82,14 @@
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Fecha Otorgamiento</label>
-								<input type="date" id="txtfecha" name="txtfecha" class="form-control" required>
+								<label for="cliente" class="control-label">Fecha Otorgamiento crédito</label>
+								<input type="date" id="txtfecha" name="txtfecha" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
+								<label for="cliente" class="control-label">Estado Tramite</label>
+								<select class="form-control estado" id="cmbestado" name="cmbestado" >
 									<option value="0">Seleccione...</option>
 									<option value="Proceso">En Proceso</option>
 									<option value="Observada">Observada</option>
@@ -100,33 +100,33 @@
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Matricula</label>
-								<input type="text" id="txtPlaca" name="txtPlaca" class="form-control" required>
+								<label for="cliente" class="control-label">Matricula de Inmueble</label>
+								<input type="text" id="txtPlaca" name="txtPlaca" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Fecha Cancelación</label>
-								<input type="date" id="txtfechaCancelacion" name="txtfechaCancelacion" class="form-control" required>
+								<label for="cliente" class="control-label">Finalizacion del tramite</label>
+								<input type="date" id="txtfechaCancelacion" name="txtfechaCancelacion" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Ingreso en Area Legal</label>
-								<input type="date" id="txtfechaLegal" name="txtfechaLegal" class="form-control" required>
+								<label for="cliente" class="control-label">Fecha presentacion (CNR)</label>
+								<input type="date" id="txtfechaLegal" name="txtfechaLegal" class="form-control" >
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Número de Presentación</label>
-								<input type="text" id="txtpresentacion" name="txtpresentacion" class="form-control" required>
+								<input type="text" id="txtpresentacion" name="txtpresentacion" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Trámite</label>
-								<select class="form-control estado" id="cmbTramite" name="cmbTramite" required="required">
+								<label for="cliente" class="control-label">Estado Finalizado de Tramite</label>
+								<select class="form-control estado" id="cmbTramite" name="cmbTramite" required="">
 									<option value="0">Seleccione...</option>
 									<option value="Operaciones">Entrega a Operaciones</option>
 									<option value="Cliente">Entregado a Cliente</option>
@@ -190,14 +190,14 @@
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Fecha Otorgamiento</label>
-								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control" required>
+								<label for="cliente" class="control-label">Fecha Otorgamiento del crédito</label>
+								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
+								<label for="cliente" class="control-label">Estado Tramite</label>
+								<select class="form-control estado" id="cmbUestado" name="cmbUestado" >
 									<option value="0">Seleccione...</option>
 									<option value="Proceso">En Proceso</option>
 									<option value="Observada">Observada</option>
@@ -208,33 +208,33 @@
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Placa</label>
-								<input type="text" id="txtUPlaca" name="txtUPlaca" class="form-control" required>
+								<label for="cliente" class="control-label">Matricula de Inmueble</label>
+								<input type="text" id="txtUPlaca" name="txtUPlaca" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Fecha Cancelación</label>
-								<input type="date" id="txtUfechaCancelacion" name="txtUfechaCancelacion" class="form-control" required>
+								<label for="cliente" class="control-label">Finalizacion del Tramite</label>
+								<input type="date" id="txtUfechaCancelacion" name="txtUfechaCancelacion" class="form-control">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Ingreso en Area Legal</label>
-								<input type="date" id="txtUfechaLegal" name="txtUfechaLegal" class="form-control" required>
+								<label for="cliente" class="control-label">Fecha Presentacion (CNR)</label>
+								<input type="date" id="txtUfechaLegal" name="txtUfechaLegal" class="form-control" >
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Número de Presentación</label>
-								<input type="text" id="txtUpresentacion" name="txtUpresentacion" class="form-control" required>
+								<input type="text" id="txtUpresentacion" name="txtUpresentacion" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
-								<label for="cliente" class="control-label">Trámite</label>
-								<select class="form-control estado" id="cmbUTramite" name="cmbUTramite" required="required">
+								<label for="cliente" class="control-label">Estado Finalizado de Tramite</label>
+								<select class="form-control estado" id="cmbUTramite" name="cmbUTramite" required="">
 									<option value="0">Seleccione...</option>
 									<option value="Operaciones">Entrega a Operaciones</option>
 									<option value="Cliente">Entregado a Cliente</option>

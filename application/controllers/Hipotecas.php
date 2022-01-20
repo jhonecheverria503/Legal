@@ -99,12 +99,12 @@ class Hipotecas extends CI_CONTROLLER
 		$tramite=$datos["cmbTramite"];
 		$Observaciones=$datos["txtObservaciones"];
 
-		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado una agencia y un estado de trámite";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
@@ -151,11 +151,11 @@ class Hipotecas extends CI_CONTROLLER
 		$tramite=$datos["cmbUTramite"];
 		$Observaciones=$datos["txtUObservaciones"];
 
-		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
+		if ($agencia=="0"){
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado una agencia y un estado de trámite";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else

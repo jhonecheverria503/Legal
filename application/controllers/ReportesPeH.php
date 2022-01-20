@@ -70,13 +70,13 @@ class ReportesPeH extends CI_CONTROLLER
 					$contador = 2;
 					$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 					$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
-					$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(35);
 					$this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(40);
-					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(45);
+					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(40);
+					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(50);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
-					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(25);
+					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(40);
@@ -213,13 +213,13 @@ class ReportesPeH extends CI_CONTROLLER
 					$contador = 2;
 					$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 					$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
-					$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(20);
-					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
-					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(40);
+					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
-					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(20);
+					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(40);
 
@@ -252,24 +252,25 @@ class ReportesPeH extends CI_CONTROLLER
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
-					$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'Placa');
+					$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'Matricula de inmueble');
 					$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'Numero Presentacion');
-					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Estado');
-					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Fecha Otorgamiento');
-					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Fecha Legal');
-					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Fecha Cancelacion');
-					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Estado de Tramite');
-					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Oficina');
+					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Estado Tramite');
+					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Fecha Otorgamiento del crédito');
+					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Fecha de presentacion (CNR)');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Finalizacion del tramite');
+					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Estado Finalizado de Tramite');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Agencia');
 					$this->excel->getActiveSheet()->setCellValue("K{$contador}", 'Observaciones');
 
 
 					foreach($res as $d){
 						//Incrementamos una fila más, para ir a la siguiente.
 						$contador++;
+
 						//Informacion de las filas de la consulta.
 						$this->excel->getActiveSheet()->setCellValue("A{$contador}", $d->id);
 						$this->excel->getActiveSheet()->setCellValue("B{$contador}", $d->Nombre);
-						$this->excel->getActiveSheet()->setCellValue("C{$contador}", $d->Placa);
+						$this->excel->getActiveSheet()->setCellValue("C{$contador}", " ".$d->Placa);
 						$this->excel->getActiveSheet()->setCellValue("D{$contador}", $d->NumeroPresentacion);
 						$this->excel->getActiveSheet()->setCellValue("E{$contador}", $d->Estado);
 						$this->excel->getActiveSheet()->setCellValue("F{$contador}", $d->FecOtor);
@@ -278,6 +279,8 @@ class ReportesPeH extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->EstadoTramite);
 						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("K{$contador}", $d->Observaciones);
+
+
 					}
 					$estiloTituloReporte = array(
 						'font' => array(

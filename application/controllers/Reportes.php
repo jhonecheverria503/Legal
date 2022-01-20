@@ -355,8 +355,8 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
 					$this->excel->getActiveSheet()->setCellValue("C{$contador}", 'Bien Embargado');
-					$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'Placa');
-					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Oficina');
+					$this->excel->getActiveSheet()->setCellValue("D{$contador}", 'Placa o Matricula');
+					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Agencia');
 					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Fecha');
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Estado');
 					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Monto');
