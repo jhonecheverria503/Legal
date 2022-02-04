@@ -52,13 +52,13 @@ class Laborales_Model extends CI_Model
 		$data = array();
 		if ($res){
 			$data['estado']=true;
-			$data['descripcion']="Empleado Modificado Correctamente";
+			$data['descripcion']="Guardado Correctamente";
 			return json_encode($data);
 		}
 		else{
 
 			$data['estado']=false;
-			$data['descripcion']="Error al Actualizar los datos";
+			$data['descripcion']="Error al Guardar";
 			return json_encode($data);
 		}
 
@@ -78,7 +78,7 @@ class Laborales_Model extends CI_Model
 		$mensaje = array();
 		if ($res){
 			$mensaje['estado']=true;
-			$mensaje['descripcion']="Cliente Modificado Correctamente";
+			$mensaje['descripcion']="Actualizado Correctamente";
 			return json_encode($mensaje);
 		}
 		else{

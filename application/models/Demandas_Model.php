@@ -51,7 +51,7 @@ class Demandas_Model extends CI_MODEL
 		$data = array();
 		if ($res){
 			$data['estado']=true;
-			$data['descripcion']="Cliente Ingresado Correctamente";
+			$data['descripcion']="Guardado Correctamente";
 			return json_encode($data);
 		}
 		else{
@@ -77,7 +77,7 @@ class Demandas_Model extends CI_MODEL
 		$mensaje = array();
 		if ($res){
 			$mensaje['estado']=true;
-			$mensaje['descripcion']="Cliente Modificado Correctamente";
+			$mensaje['descripcion']="Actualizado Correctamente";
 			return json_encode($mensaje);
 		}
 		else{

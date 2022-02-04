@@ -20,7 +20,7 @@ $('#ClienteNuevoForm').on('submit',function(e) {
 	var formData = new FormData($(this)[0]);
 
 	Swal.fire({
-		title: '¿Estas segur@ de editar la garantia?',
+		title: '¿Estas segur@ que desea guardar?',
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
@@ -80,7 +80,6 @@ $(document).on('click', '.edit', function() {
 	})
 		.done(function (output) {
 			var datos = JSON.parse(output);
-			console.log(datos);
 			$('#txtid').val(datos[0].id);
 			$('#txtUNombre').val(datos[0].nombreCli);
 			$('#txtUfecha').val(datos[0].FechaDemanda);
@@ -97,7 +96,7 @@ $('#EditarClienteForm').on('submit',function(e) {
 	var formData = new FormData($(this)[0]);
 
 	Swal.fire({
-		title: '¿Estas segur@ de editar la garantia?',
+		title: '¿Estas segur@ que desea actualizar?',
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
