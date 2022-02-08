@@ -245,6 +245,8 @@ class Cartas extends CI_CONTROLLER
 		$NIT=$datosCliente[0]->Nit;
 		$hora=date("H",strtotime($datosCliente[0]->fecha));
 		$minutos=date("i:s",strtotime($datosCliente[0]->fecha));
+		$diaActual=date('d');
+		$mesActual=$this->getMes(date('m'));
 		$horario="am";
 		if (intval($hora)>12)
 		{
@@ -262,7 +264,29 @@ class Cartas extends CI_CONTROLLER
 
 			$articulo="Sra";
 		}
+		require 'vendor/autoload.php';
+		$formatter = new \Luecano\NumeroALetras\NumeroALetras();
+		$DiasMora=($formatter->toWords($datosCliente[0]->DiasMora));
+		$Monto=($formatter->toWords($datosCliente[0]->Monto));
+		//funcion explode extrae decimales posicion 0 es el entero y posicion 1 es el decimal
+		$fraccion=explode(".",$datosCliente[0]->Monto);
+		$parrafo1="que a esta fecha tiene mas de ".mb_strtolower($DiasMora)." dias mora y una deuda pendiente de cancelar por la cantidad total de ".$Monto." ".$fraccion[1]."/100 DOLARES DE LOS ESTADOS UNIDOS DE AMERICA ($".$datosCliente[0]->Monto.") nos vemos en la obligación de utilizar la documentación legal para exigir la totalidad del pago por la vía judicial, sin embargo, a efecto de interrumpir el proceso en la etapa que se encuentra requerimos su pago inmediato.";
+		$parrafo2="De no realizar su pago inmediato; y si a usted le interesa llegar a una CONCILIACION para solventar el caso, deberá presentarse el día ".$datosCliente[0]->dia. ", ".$datosCliente[0]->numero. " de ".$datosCliente[0]->Mes. " de ".$datosCliente[0]->anio." a las ".$hora.":".$minutos." ".$horario. " a nuestro departamento jurídico ubicado en CENTRO FINANCIERO ASEI: Colonia San Francisco, Calle Los Bambúes, #19, San Salvador, o cancelará lo adeudado.";
+		$data=array(
+		"Dui"=>$DUI,
+			"Nit"=>$NIT,
+			"parrafo1"=>$parrafo1,
+			"parrafo2"=>$parrafo2,
+			"grupo"=>$Grupo,
+				"articulo"=>$articulo,
+				"Departamento"=>"San Salvador",
+				"nombre"=>$nombre,
+				"mesActual"=>$mesActual
 
+		);
+
+		$this->load->view("Reportes/Carta",$data);
+		/*
 		require 'vendor/autoload.php';
 		$formatter = new \Luecano\NumeroALetras\NumeroALetras();
 		$DiasMora=($formatter->toWords($datosCliente[0]->DiasMora));
@@ -272,7 +296,7 @@ class Cartas extends CI_CONTROLLER
 
 		$inputFileType = 'Xlsx';
 		$inputFileName =APPPATH."../resources/templates/Plantilla.xlsx";
-		/** Create a new Xls Reader  **/
+
 
 		//$formatter->toWords();
 		$reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
@@ -301,6 +325,7 @@ class Cartas extends CI_CONTROLLER
 		$this->Bitacora_Model->insertAccion($dataBitacora);
 
 		$writer->save('php://output');
+		*/
 
 	}
 
@@ -346,6 +371,48 @@ class Cartas extends CI_CONTROLLER
 		}
 		return $hora;
 
+	}
+
+	public function getMes($mes){
+		switch ($mes) {
+			case "01":
+				$mes="Enero";
+				break;
+			case "02":
+				$mes="Febrero";
+				break;
+			case "03":
+				$mes="Marzo";
+				break;
+			case "04":
+				$mes= "Abril";
+				break;
+			case "05":
+				$mes="Mayo";
+				break;
+			case "06":
+				$mes="Junio";
+				break;
+			case "07":
+				$mes="Julio";
+				break;
+			case "08":
+				$mes= "Agosto";
+				break;
+			case "09":
+				$mes= "Septiembre";
+				break;
+			case "10":
+				$mes="Octubre";
+				break;
+			case "11":
+				$mes= "Noviembre";
+				break;
+			case "12":
+				$mes= "Diciembre";
+				break;
+		}
+		return $mes;
 	}
 
 
