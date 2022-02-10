@@ -150,4 +150,44 @@ class Reportes_Model extends CI_MODEL
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
+
+	public function getTodas($fechainicio,$fechafin,$ccodofi)
+	{
+		$fecha1 = date('d/m/Y',strtotime($fechainicio));
+		$fecha2 = date('d/m/Y',strtotime($fechafin));
+		$sql="";
+		if ($ccodofi!=0){
+			$sql="
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+			SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59:59' 
+			SELECT dd.id,dd.Nombre,dd.Fecha,
+			CASE 
+			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'
+			WHEN dd.Estado='Audiencia' THEN 'Audiencia Conciliatoria'
+			ELSE dd.Estado END AS Estado,t.cnomofi,dd.Observaciones,dd.ReferenciaCaso
+		 	FROM Demandas_DPC AS dd
+		 	JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=dd.Agencia
+			WHERE dd.Fecha BETWEEN @fecha1 AND @fecha2 and dd.Agencia='$ccodofi'";
+		}else{
+			$sql="
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+			SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59:59' 
+			SELECT dd.id,dd.Nombre,dd.Fecha,
+			CASE 
+			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'
+			WHEN dd.Estado='Audiencia' THEN 'Audiencia Conciliatoria'
+			ELSE dd.Estado END AS Estado,t.cnomofi,dd.Observaciones,dd.ReferenciaCaso
+		 	FROM Demandas_DPC AS dd
+		 	JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=dd.Agencia
+			WHERE dd.Fecha BETWEEN @fecha1 AND @fecha2";
+		}
+
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
 }
+
