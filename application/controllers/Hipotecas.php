@@ -40,7 +40,6 @@ class Hipotecas extends CI_CONTROLLER
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Entregado a Legal</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Hipotecas extends CI_CONTROLLER
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->Nombre; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->FechaLegal; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -111,11 +109,11 @@ class Hipotecas extends CI_CONTROLLER
 		{
 			$datoCliente= array(
 				'Nombre'=>$nombre,
-				'FecOtor'=>date("d-m-Y",strtotime($fechaOtorgamiento)),
+				'FecOtor'=>$fechaOtorgamiento=='' ? null :date("d-m-Y",strtotime($fechaOtorgamiento)),
 				'Placa'=> $placa,
-				'FechaLegal'=>date("d-m-Y",strtotime($fechaLegal)),
+				'FechaLegal'=>$fechaLegal=='' ? null :date("d-m-Y",strtotime($fechaLegal)),
 				'NumeroPresentacion'=>$presentacion,
-				'FechaCancelacion'=>date("d-m-Y",strtotime($fechaCancelacion)),
+				'FechaCancelacion'=>$fechaCancelacion=='' ? null :date("d-m-Y",strtotime($fechaCancelacion)),
 				'Estado'=>$estado,
 				'EstadoTramite'=>$tramite,
 				'Agencia'=>$agencia,
@@ -162,15 +160,16 @@ class Hipotecas extends CI_CONTROLLER
 		{
 			$datoCliente= array(
 				'Nombre'=>$nombre,
-				'FecOtor'=>date("d-m-Y",strtotime($fechaOtorgamiento)),
+				'FecOtor'=>$fechaOtorgamiento=='' ? null :date("d-m-Y",strtotime($fechaOtorgamiento)),
 				'Placa'=> $placa,
-				'FechaLegal'=>date("d-m-Y",strtotime($fechaLegal)),
+				'FechaLegal'=>$fechaLegal=='' ? null :date("d-m-Y",strtotime($fechaLegal)),
 				'NumeroPresentacion'=>$presentacion,
-				'FechaCancelacion'=>date("d-m-Y",strtotime($fechaCancelacion)),
+				'FechaCancelacion'=>$fechaCancelacion=='' ? null :date("d-m-Y",strtotime($fechaCancelacion)),
 				'Estado'=>$estado,
 				'EstadoTramite'=>$tramite,
 				'Agencia'=>$agencia,
-				'Observaciones'=>$Observaciones
+				'Observaciones'=>$Observaciones,
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Hipotecas_Model->actualizarCliente($datoCliente,$where);

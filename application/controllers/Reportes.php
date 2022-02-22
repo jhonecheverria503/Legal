@@ -43,7 +43,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Proceso Judiciales del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Judiciales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -67,7 +67,7 @@ class Reportes extends CI_CONTROLLER
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
 					$this->excel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					//Contador de filas
 					$contador = 2;
@@ -80,6 +80,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(10);
+					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
 
 
 					//Le aplicamos negrita a los títulos de la cabecera.
@@ -92,6 +93,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFont()->setBold(true);
 
 
 					//Le aplicamos color a los titulos.
@@ -104,6 +106,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 
 
@@ -116,6 +119,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Fecha de demanda');
 					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Correlativo Juzgado');
 					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Monto');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Fecha Creacion');
 
 
 
@@ -132,6 +136,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->FechaDemanda);
 						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->Correlativo_juzgado);
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->Monto);
+						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->fechacrea);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -148,7 +153,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A2:I2')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:J2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "ProcesosJudiciales.xls";
 					header('Content-Type: application/vnd.ms-excel');
@@ -174,7 +179,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Proceso Laborales del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Laborales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:G1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:H1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -197,8 +202,8 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:G1');
+					$this->excel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:H1');
 
 					//Contador de filas
 					$contador = 2;
@@ -209,6 +214,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -218,6 +224,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 
 					//Le aplicamos color a los titulos.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
@@ -227,6 +234,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Demandante');
@@ -235,6 +243,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Oficina');
 					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Estado');
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Observaciones');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Fecha Creacion');
 
 
 					foreach($res as $d){
@@ -248,6 +257,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("E{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("F{$contador}", $d->Estado);
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->Observaciones);
+						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->fechacrea);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -264,7 +274,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A2:G2')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:H2')->applyFromArray($estiloTituloReporte);
 
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "ProcesosLaborales.xls";
@@ -291,7 +301,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Bienes embargados del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Bienes Embargados');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -314,9 +324,9 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($estiloTituloReporte);
-					$this->excel->getActiveSheet()->getStyle('A2:I2')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:J2')->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					//Contador de filas
 					$contador = 2;
@@ -329,6 +339,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
 					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -340,6 +351,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFont()->setBold(true);
 
 					//Le aplicamos color a los titulos.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
@@ -351,6 +363,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
@@ -361,6 +374,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Estado');
 					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Monto');
 					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Observaciones');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Fecha Creacion');
 
 
 					foreach($res as $d){
@@ -376,6 +390,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->Estado);
 						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->Monto);
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->Observaciones);
+						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->fechacrea);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -392,7 +407,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A2:I2')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:J2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "BienesEmbargados.xls";
 					header('Content-Type: application/vnd.ms-excel');
@@ -418,7 +433,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Demandas del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Demandas DPC');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:G1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:H1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -441,8 +456,8 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A1:G1')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:G1');
+					$this->excel->getActiveSheet()->getStyle('A1:H1')->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:H1');
 
 					//Contador de filas
 					$contador = 2;
@@ -453,6 +468,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -462,6 +478,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 
 
 					//Le aplicamos color a los titulos.
@@ -472,6 +489,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FF0000');
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
@@ -480,6 +498,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Oficina');
 					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Observaciones');
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Referencia del caso');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Fecha Creacion');
 
 					foreach($res as $d){
 						//Incrementamos una fila más, para ir a la siguiente.
@@ -492,6 +511,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("E{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("F{$contador}", $d->Observaciones);
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->ReferenciaCaso);
+						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->fechacrea);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -508,7 +528,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A2:G2')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:H2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$archivo = "Demandas.xls";
 					header('Content-Type: application/vnd.ms-excel');
@@ -534,7 +554,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A1", 'Proceso Judiciales del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Judiciales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -557,8 +577,8 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A1:I1')->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:I1');
+					$this->excel->getActiveSheet()->getStyle('A1:J1')->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A1:J1');
 
 					//Contador de filas
 					$contador = 2;
@@ -571,6 +591,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(10);
+					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
 
 
 					//Le aplicamos negrita a los títulos de la cabecera.
@@ -583,6 +604,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFont()->setBold(true);
 
 
 					//Le aplicamos color a los titulos.
@@ -595,6 +617,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 
 
@@ -607,6 +630,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Fecha de demanda');
 					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Correlativo Juzgado');
 					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Monto');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Fecha Creacion');
 
 
 
@@ -623,6 +647,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->FechaDemanda);
 						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->Correlativo_juzgado);
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->Monto);
+						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->fechacrea);
 					}
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -639,7 +664,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A2:I2')->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A2:J2')->applyFromArray($estiloTituloReporte);
 					//Le ponemos un nombre al archivo que se va a generar.
 					$contador++;
 					$contador++;
@@ -653,7 +678,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A".$contador, 'Proceso Laborales del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Laborales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':G'.$contador);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':H'.$contador);
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -676,8 +701,8 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':G'.$contador)->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':G'.$contador);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':H'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':H'.$contador);
 
 					//Contador de filas
 					$contador++;
@@ -696,7 +721,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':G'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':H'.$contador)->applyFromArray($estiloTituloReporte);
 
 					$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 					$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
@@ -705,6 +730,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
+					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -714,6 +740,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 
 					//Le aplicamos color a los titulos.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
@@ -723,6 +750,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Demandante');
@@ -731,6 +759,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Oficina');
 					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Estado');
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Observaciones');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Fecha Creacion');
 
 
 					foreach($res as $d){
@@ -744,6 +773,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("E{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("F{$contador}", $d->Estado);
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->Observaciones);
+						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->fechacrea);
 					}
 					$contador++;
 					$contador++;
@@ -756,7 +786,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A".$contador, 'Proceso Laborales del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Procesos Laborales');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':I'.$contador);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':J'.$contador);
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -779,8 +809,8 @@ class Reportes extends CI_CONTROLLER
 						)
 					);
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':I'.$contador)->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':I'.$contador);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':J'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':J'.$contador);
 
 					//Contador de filas
 					$contador++;
@@ -799,7 +829,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':I'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':J'.$contador)->applyFromArray($estiloTituloReporte);
 
 					$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 					$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
@@ -810,6 +840,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(20);
 					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(15);
 					$this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -821,6 +852,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFont()->setBold(true);
 
 					//Le aplicamos color a los titulos.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
@@ -832,6 +864,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("I{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("J{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
@@ -843,6 +876,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Estado');
 					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Monto');
 					$this->excel->getActiveSheet()->setCellValue("I{$contador}", 'Observaciones');
+					$this->excel->getActiveSheet()->setCellValue("J{$contador}", 'Fecha Creacion');
 
 
 					foreach ($res as $d) {
@@ -858,6 +892,7 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->Estado);
 						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->Monto);
 						$this->excel->getActiveSheet()->setCellValue("I{$contador}", $d->Observaciones);
+						$this->excel->getActiveSheet()->setCellValue("J{$contador}", $d->fechacrea);
 					}
 					$contador++;
 					$contador++;
@@ -870,7 +905,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->setActiveSheetIndex(0);
 					$this->excel->getActiveSheet()->setCellValue("A".$contador, 'Demandas del: '.$fechainicio.' al '.$fechafin);
 					$this->excel->getActiveSheet()->setTitle('Demandas DPC');
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':G'.$contador);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':H'.$contador);
 
 					$estiloTituloReporte = array(
 						'font' => array(
@@ -892,9 +927,10 @@ class Reportes extends CI_CONTROLLER
 							'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
 						)
 					);
+
 					$this->excel->getDefaultStyle()->applyFromArray($style);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':G'.$contador)->applyFromArray($estiloTituloReporte);
-					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':G'.$contador);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':H'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->setActiveSheetIndex(0)->mergeCells('A'.$contador.':H'.$contador);
 
 					//Contador de filas
 					$contador++;
@@ -913,7 +949,7 @@ class Reportes extends CI_CONTROLLER
 							)
 						),
 					);
-					$this->excel->getActiveSheet()->getStyle('A'.$contador.':G'.$contador)->applyFromArray($estiloTituloReporte);
+					$this->excel->getActiveSheet()->getStyle('A'.$contador.':H'.$contador)->applyFromArray($estiloTituloReporte);
 					$this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 					$this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(40);
 					$this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(25);
@@ -921,6 +957,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(30);
 					$this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(30);
+					$this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(25);
 
 					//Le aplicamos negrita a los títulos de la cabecera.
 					$this->excel->getActiveSheet()->getStyle("A{$contador}")->getFont()->setBold(true);
@@ -930,6 +967,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFont()->setBold(true);
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFont()->setBold(true);
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFont()->setBold(true);
 
 
 					//Le aplicamos color a los titulos.
@@ -940,6 +978,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->getStyle("E{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("F{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 					$this->excel->getActiveSheet()->getStyle("G{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
+					$this->excel->getActiveSheet()->getStyle("H{$contador}")->getFill()->getStartColor()->setRGB('FFCCFF');
 
 					$this->excel->getActiveSheet()->setCellValue("A{$contador}", 'ID');
 					$this->excel->getActiveSheet()->setCellValue("B{$contador}", 'Nombre');
@@ -948,6 +987,7 @@ class Reportes extends CI_CONTROLLER
 					$this->excel->getActiveSheet()->setCellValue("E{$contador}", 'Oficina');
 					$this->excel->getActiveSheet()->setCellValue("F{$contador}", 'Observaciones');
 					$this->excel->getActiveSheet()->setCellValue("G{$contador}", 'Referencia del caso');
+					$this->excel->getActiveSheet()->setCellValue("H{$contador}", 'Fecha Creacion');
 
 					foreach($res as $d){
 						//Incrementamos una fila más, para ir a la siguiente.
@@ -960,24 +1000,21 @@ class Reportes extends CI_CONTROLLER
 						$this->excel->getActiveSheet()->setCellValue("E{$contador}", $d->cnomofi);
 						$this->excel->getActiveSheet()->setCellValue("F{$contador}", $d->Observaciones);
 						$this->excel->getActiveSheet()->setCellValue("G{$contador}", $d->ReferenciaCaso);
+						$this->excel->getActiveSheet()->setCellValue("H{$contador}", $d->fechacrea);
 					}
 					$contador++;
 					$contador++;
 
 				}
 
-
-					$archivo = "Conglomerado.xls";
-					header('Content-Type: application/vnd.ms-excel');
-					header('Content-Disposition: attachment;filename="' . $archivo . '"');
-					header('Cache-Control: max-age=0');
-					$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
-					//Hacemos una salida al navegador con el archivo Excel.
-					$objWriter->save('php://output');
-
-
+				$archivo = "Conglomerado.xls";
+				header('Content-Type: application/vnd.ms-excel');
+				header('Content-Disposition: attachment;filename="' . $archivo . '"');
+				header('Cache-Control: max-age=0');
+				$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');
+				//Hacemos una salida al navegador con el archivo Excel.
+				$objWriter->save('php://output');
 				break;
-
 			default:
 				echo '<script>alert("NO HAY DATOS PARA MOSTRAR");</script>';
 				echo "<script>window.close();</script>";

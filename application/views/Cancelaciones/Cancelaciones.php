@@ -83,7 +83,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Otorgamiento</label>
-								<input type="date" id="txtfecha" name="txtfecha" class="form-control" required>
+								<input type="date" id="txtfecha" name="txtfecha" class="form-control">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
@@ -101,32 +101,32 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Placa</label>
-								<input type="text" id="txtPlaca" name="txtPlaca" class="form-control" required>
+								<input type="text" id="txtPlaca" name="txtPlaca" class="form-control">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Cancelación</label>
-								<input type="date" id="txtfechaCancelacion" name="txtfechaCancelacion" class="form-control" required>
+								<input type="date" id="txtfechaCancelacion" name="txtfechaCancelacion" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Ingreso en Area Legal</label>
-								<input type="date" id="txtfechaLegal" name="txtfechaLegal" class="form-control" required>
+								<input type="date" id="txtfechaLegal" name="txtfechaLegal" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Número de Presentación</label>
-								<input type="text" id="txtpresentacion" name="txtpresentacion" class="form-control" required>
+								<input type="text" id="txtpresentacion" name="txtpresentacion" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Trámite</label>
-								<select class="form-control estado" id="cmbTramite" name="cmbTramite" required="required">
+								<select class="form-control estado" id="cmbTramite" name="cmbTramite"">
 									<option value="0">Seleccione...</option>
 									<option value="Operaciones">Entrega a Operaciones</option>
 									<option value="Cliente">Entregado a Cliente</option>
@@ -198,7 +198,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Otorgamiento</label>
-								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control" required>
+								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
@@ -216,26 +216,26 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Placa</label>
-								<input type="text" id="txtUPlaca" name="txtUPlaca" class="form-control" required>
+								<input type="text" id="txtUPlaca" name="txtUPlaca" class="form-control" >
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Cancelación</label>
-								<input type="date" id="txtUfechaCancelacion" name="txtUfechaCancelacion" class="form-control" required>
+								<input type="date" id="txtUfechaCancelacion" name="txtUfechaCancelacion" class="form-control">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Ingreso en Area Legal</label>
-								<input type="date" id="txtUfechaLegal" name="txtUfechaLegal" class="form-control" required>
+								<input type="date" id="txtUfechaLegal" name="txtUfechaLegal" class="form-control" >
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Número de Presentación</label>
-								<input type="text" id="txtUpresentacion" name="txtUpresentacion" class="form-control" required>
+								<input type="text" id="txtUpresentacion" name="txtUpresentacion" class="form-control">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">

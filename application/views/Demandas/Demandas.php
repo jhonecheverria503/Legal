@@ -84,14 +84,14 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
-								<input type="datetime-local" id="txtfecha" name="txtfecha" class="form-control" required>
+								<input type="datetime-local" id="txtfecha" name="txtfecha" class="form-control" >
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
+								<select class="form-control estado" id="cmbestado" name="cmbestado" >
 									<option value="0">Seleccione...</option>
 									<option value="Contestacion">Contestacion de denuncia</option>
 									<option value="Audiencia">Audiencia Conciliatoria</option>
@@ -102,7 +102,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Referencia del caso</label>
-								<input type="text" id="txtReferencia" name="txtReferencia" class="form-control" required>
+								<input type="text" id="txtReferencia" name="txtReferencia" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>
@@ -163,14 +163,14 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
-								<input type="datetime-local" id="txtUfecha" name="txtUfecha" class="form-control" required>
+								<input type="datetime-local" id="txtUfecha" name="txtUfecha" class="form-control" >
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
+								<select class="form-control estado" id="cmbUestado" name="cmbUestado">
 									<option value="0">Seleccione...</option>
 									<option value="Contestacion">Contestacion de denuncia</option>
 									<option value="Audiencia">Audiencia Conciliatoria</option>
@@ -181,7 +181,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Referencia del caso</label>
-								<input type="text" id="txtUReferencia" name="txtUReferencia" class="form-control" required>
+								<input type="text" id="txtUReferencia" name="txtUReferencia" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>

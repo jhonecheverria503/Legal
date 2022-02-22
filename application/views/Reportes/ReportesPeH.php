@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<a class="navbar-brand">Reportes</a>
 					<select class="form-control estado" id="cmbReporte" name="cmbReporte" required="required">
-						<option value="0">Seleccione...</option>
+						<option value="0">Todos</option>
 						<option value="Prenda">Cancelaciones de Prenda</option>
 						<option value="Hipoteca">Cancelaciones de Hipoteca</option>
 					</select>

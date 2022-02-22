@@ -40,7 +40,6 @@ class Laborales extends CI_Controller
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Fecha</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Laborales extends CI_Controller
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->Demandante; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->FechaDemanda; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -95,12 +93,12 @@ class Laborales extends CI_Controller
 		$estado=$datos["cmbestado"];
 		$Observaciones=$datos["txtObservaciones"];
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado y una agencia";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
@@ -108,7 +106,7 @@ class Laborales extends CI_Controller
 			$datoCliente= array(
 				'Demandante'=>$nombre,
 				'Juzgado'=>$juzgado,
-				'FechaDemanda'=>date("d-m-Y",strtotime($fecha)),
+				'FechaDemanda'=>$fecha=='' ? null :date("d-m-Y",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
@@ -163,7 +161,7 @@ class Laborales extends CI_Controller
 		$estado=$datos["cmbUestado"];
 		$Observaciones=$datos["txtUObservaciones"];
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
@@ -176,10 +174,11 @@ class Laborales extends CI_Controller
 			$datoCliente= array(
 					'Demandante'=>$nombre,
 					'Juzgado'=>$juzgado,
-					'FechaDemanda'=>date("d-m-Y",strtotime($fecha)),
+					'FechaDemanda'=>$fecha=='' ? null :date("d-m-Y",strtotime($fecha)),
 					'Agencia'=>$agencia,
 					'Estado'=>$estado,
-					'Observaciones'=>$Observaciones
+					'Observaciones'=>$Observaciones,
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 

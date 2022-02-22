@@ -72,7 +72,8 @@ $mpdf->SetWatermarkText('PRUEBA WATERMARK');
 $mpdf->showWatermarkText = true;
 */
 $mpdf->WriteHTML($html);
-$mpdf->Output();
+$mpdf->Output($nombre.'.pdf',\Mpdf\Output\Destination::DOWNLOAD);
+//$mpdf->Output();
 
 
 

@@ -30,7 +30,7 @@ class ReportesPeH_Model extends CI_MODEL
 					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite
 		 	 FROM Cancelaciones_Prenda AS cp
 			JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=cp.Agencia
-			WHERE cp.FechaLegal BETWEEN '$fechainicio' AND '$fechafin'AND  cp.Agencia='$ccodofi'";
+			WHERE cp.fechacrea BETWEEN '$fechainicio' AND '$fechafin'AND  cp.Agencia='$ccodofi'";
 		}else{
 			$sql="	
 			SELECT cp.id,cp.Nombre,cp.Placa,cp.NumeroPresentacion,cp.FecOtor,cp.FechaLegal,cp.FechaCancelacion,
@@ -40,7 +40,7 @@ class ReportesPeH_Model extends CI_MODEL
 					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite
 		 	 FROM Cancelaciones_Prenda AS cp
 			JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=cp.Agencia
-			WHERE cp.FechaLegal BETWEEN '$fechainicio' AND '$fechafin'";
+			WHERE cp.fechacrea BETWEEN '$fechainicio' AND '$fechafin'";
 		}
 
 		$query = $this->db->query($sql);
@@ -66,7 +66,7 @@ class ReportesPeH_Model extends CI_MODEL
 				t.cnomofi,ch.Observaciones
 		 	 	FROM Cancelaciones_Hipotecas AS ch
 				JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=ch.Agencia
-				WHERE ch.FechaLegal BETWEEN '$fechainicio' AND '$fechafin' AND ch.Agencia='$ccodofi'";
+				WHERE ch.fechacrea BETWEEN '$fechainicio' AND '$fechafin' AND ch.Agencia='$ccodofi'";
 		}else{
 			$sql="	
 			SELECT ch.id,ch.Nombre,ch.Placa,ch.NumeroPresentacion,
@@ -83,7 +83,7 @@ class ReportesPeH_Model extends CI_MODEL
 				t.cnomofi,ch.Observaciones
 		 		 FROM Cancelaciones_Hipotecas AS ch
 				JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=ch.Agencia
-				WHERE ch.FechaLegal BETWEEN '$fechainicio' AND '$fechafin'";
+				WHERE ch.fechacrea BETWEEN '$fechainicio' AND '$fechafin'";
 		}
 
 		$query = $this->db->query($sql);

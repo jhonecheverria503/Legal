@@ -40,7 +40,6 @@ class Embargados extends CI_CONTROLLER
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Fecha</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Embargados extends CI_CONTROLLER
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->Nombre; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->Fecha; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -97,7 +95,7 @@ class Embargados extends CI_CONTROLLER
 		$Placa=$datos["txtPlaca"];
 		$Observaciones=$datos["txtObservaciones"];
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
@@ -110,11 +108,11 @@ class Embargados extends CI_CONTROLLER
 			$datoCliente= array(
 				'Nombre'=>$nombre,
 				'BienEmbargado'=>$Bien,
-				'Fecha'=>date("d-m-Y",strtotime($fecha)),
+				'Fecha'=>$fecha=='' ? null :date("d-m-Y",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
-				'Monto'=>$monto,
+				'Monto'=>doubleval($monto),
 				'Placa'=>$Placa
 			);
 
@@ -144,7 +142,7 @@ class Embargados extends CI_CONTROLLER
 		$Placa=$datos["txtUPlaca"];
 		$Observaciones=$datos["txtUObservaciones"];
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
@@ -158,12 +156,13 @@ class Embargados extends CI_CONTROLLER
 			$datoCliente= array(
 				'Nombre'=>$nombre,
 				'BienEmbargado'=>$Bien,
-				'Fecha'=>date("d-m-Y",strtotime($fecha)),
+				'Fecha'=>$fecha=='' ? null :date("d-m-Y",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
-				'Monto'=>$monto,
-				'Placa'=>$Placa
+				'Monto'=>doubleval($monto),
+				'Placa'=>$Placa,
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 

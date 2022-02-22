@@ -40,7 +40,6 @@ class Judiciales extends CI_Controller
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Fecha</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Judiciales extends CI_Controller
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->nombreCli; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->FechaDemanda; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -110,12 +108,12 @@ class Judiciales extends CI_Controller
 			$datoCliente= array(
 				'nombreCli'=>$nombre,
 				'Juzgado'=>$juzgado,
-				'FechaDemanda'=>date("d-m-Y",strtotime($fecha)),
+				'FechaDemanda'=>$fecha==''? null :date("d-m-Y",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
 				'Correlativo_juzgado'=>$correlativo,
-				'Monto'=>$monto
+				'Monto'=>$monto=='' ? null: $monto
 			);
 
 			 $res=$this->Judiciales_Model->saveCliente($datoCliente);
@@ -157,12 +155,13 @@ class Judiciales extends CI_Controller
 			$datoCliente= array(
 					'nombreCli'=>$nombre,
 					'Juzgado'=>$juzgado,
-					'FechaDemanda'=>date("d-m-Y",strtotime($fecha)),
+					'FechaDemanda'=>$fecha==''? null :date("d-m-Y",strtotime($fecha)),
 					'Agencia'=>$agencia,
 					'Estado'=>$estado,
 					'Observaciones'=>$Observaciones,
-					'Monto'=>$monto,
-					'Correlativo_Juzgado'=>$correlativo
+					'Monto'=>$monto=='' ? null: $monto,
+					'Correlativo_Juzgado'=>$correlativo,
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 

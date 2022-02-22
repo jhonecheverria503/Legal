@@ -68,7 +68,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Tipo de Bien Embargado</label>
-								<input type="text" id="txtBien" name="txtBien" class="form-control" onKeyup="this.value=this.value.toUpperCase()" required>
+								<input type="text" id="txtBien" name="txtBien" class="form-control" onKeyup="this.value=this.value.toUpperCase()">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
@@ -90,14 +90,14 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
-								<input type="date" id="txtfecha" name="txtfecha" class="form-control" required>
+								<input type="date" id="txtfecha" name="txtfecha" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbestado" name="cmbestado" required="required">
+								<select class="form-control estado" id="cmbestado" name="cmbestado">
 									<option value="0">Seleccione...</option>
 									<option value="Proceso">En Proceso</option>
 									<option value="Observada">Observada</option>
@@ -110,7 +110,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Monto</label>
-								<input type="text" id="txtMonto" name="txtMonto" class="form-control" onkeypress="return filterFloat(event,this)" required>
+								<input type="text" id="txtMonto" name="txtMonto" class="form-control" onkeypress="return filterFloat(event,this)">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
@@ -161,7 +161,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Tipo de Bien Embargado</label>
-								<input type="text" id="txtUBien" name="txtUBien" class="form-control" onKeyup="this.value=this.value.toUpperCase()" required>
+								<input type="text" id="txtUBien" name="txtUBien" class="form-control" onKeyup="this.value=this.value.toUpperCase()">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
@@ -183,14 +183,14 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Fecha Dación</label>
-								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control" required>
+								<input type="date" id="txtUfecha" name="txtUfecha" class="form-control">
 							</div>
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado</label>
-								<select class="form-control estado" id="cmbUestado" name="cmbUestado" required="required">
+								<select class="form-control estado" id="cmbUestado" name="cmbUestado">
 									<option value="0">Seleccione...</option>
 									<option value="Proceso">En Proceso</option>
 									<option value="Observada">Observada</option>
@@ -203,7 +203,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Monto</label>
-								<input type="text" id="txtUMonto" name="txtUMonto" class="form-control" onkeypress="return filterFloat(event,this)" required>
+								<input type="text" id="txtUMonto" name="txtUMonto" class="form-control" onkeypress="return filterFloat(event,this)">
 							</div>
 						</div>
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">

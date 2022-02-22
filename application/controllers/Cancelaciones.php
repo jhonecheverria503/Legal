@@ -40,7 +40,6 @@ class Cancelaciones extends CI_CONTROLLER
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Entregado a Legal</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Cancelaciones extends CI_CONTROLLER
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->Nombre; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->FechaLegal; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -100,28 +98,28 @@ class Cancelaciones extends CI_CONTROLLER
 		$finalizacion=$datos["txtFinalizacion"];
 		$Observaciones=$datos["txtObservaciones"];
 
-		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
-
+		if ($agencia=="0"){
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado una agencia y un estado de trámite";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
 		{
 			$datoCliente= array(
 					'Nombre'=>$nombre,
-					'FecOtor'=>date("d-m-Y",strtotime($fechaOtorgamiento)),
+					'FecOtor'=>$fechaOtorgamiento=='' ? null :date("d-m-Y",strtotime($fechaOtorgamiento)),
 					'Placa'=> $placa,
-					'FechaLegal'=>date("d-m-Y",strtotime($fechaLegal)),
+					'FechaLegal'=>$fechaLegal=='' ? null : date("d-m-Y",strtotime($fechaLegal)),
 					'NumeroPresentacion'=>$presentacion,
-					'FechaCancelacion'=>date("d-m-Y",strtotime($fechaCancelacion)),
+					'FechaCancelacion'=>$fechaCancelacion== '' ? null :date("d-m-Y",strtotime($fechaCancelacion)),
 					'Estado'=>$estado,
 					'EstadoTramite'=>$tramite,
 					'Agencia'=>$agencia,
 					'Observaciones'=>$Observaciones,
-					'finalizacionTramite'=>$finalizacion
+					'finalizacionTramite'=>$finalizacion=='' ? null : date("d-m-Y",strtotime($finalizacion)),
+					'fechacrea'=>date('d-m-Y H:i:s')
 			);
 
 			$res=$this->Cancelaciones_Model->saveCliente($datoCliente);
@@ -140,7 +138,6 @@ class Cancelaciones extends CI_CONTROLLER
 
 	public function updateCliente()
 	{
-
 		$datos=$this->input->post();
 		$nombre=$datos["txtUNombre"];
 		$agencia=$datos["txtUAgencia"];
@@ -154,27 +151,27 @@ class Cancelaciones extends CI_CONTROLLER
 		$finalizacion=$datos["txtUFinalizacion"];
 		$Observaciones=$datos["txtUObservaciones"];
 
-		if ($estado=="0" or $agencia=="0" or $tramite=="0"){
-
+		if ($agencia=="0"){
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado una agencia y un estado de trámite";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
 		{
 			$datoCliente= array(
 					'Nombre'=>$nombre,
-					'FecOtor'=>date("d-m-Y",strtotime($fechaOtorgamiento)),
+					'FecOtor'=>$fechaOtorgamiento=='' ? null :date("d-m-Y",strtotime($fechaOtorgamiento)),
 					'Placa'=> $placa,
-					'FechaLegal'=>date("d-m-Y",strtotime($fechaLegal)),
+					'FechaLegal'=>$fechaLegal=='' ? null : date("d-m-Y",strtotime($fechaLegal)),
 					'NumeroPresentacion'=>$presentacion,
-					'FechaCancelacion'=>date("d-m-Y",strtotime($fechaCancelacion)),
+					'FechaCancelacion'=>$fechaCancelacion== '' ? null :date("d-m-Y",strtotime($fechaCancelacion)),
 					'Estado'=>$estado,
 					'EstadoTramite'=>$tramite,
 					'Agencia'=>$agencia,
 					'Observaciones'=>$Observaciones,
-					'finalizacionTramite'=>$finalizacion,
+					'finalizacionTramite'=>$finalizacion=='' ? null : date("d-m-Y",strtotime($finalizacion)),
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Cancelaciones_Model->actualizarCliente($datoCliente,$where);

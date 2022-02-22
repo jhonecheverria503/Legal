@@ -40,7 +40,6 @@ class Demandas extends CI_CONTROLLER
 					<th scope="col">Nombre</th>
 					<th scope="col">Agencia</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Fecha</th>
 					<th scope="col"></th>
 				</tr>
 				</thead>
@@ -53,7 +52,6 @@ class Demandas extends CI_CONTROLLER
 						<td id="Nombre<?php echo $datos->id; ?>"><?php echo $datos->Nombre; ?></td>
 						<td id="Agencia<?php echo $datos->id; ?>"><?php echo $datos->agencia; ?></td>
 						<td id="Estado<?php echo $datos->id; ?>"><?php echo $datos->estado; ?></td>
-						<td id="Fecha<?php echo $datos->id; ?>"><?php echo $datos->Fecha; ?></td>
 						<td>
 							<button class='btn btn-success edit' type="submit" data-toggle="modal" value="<?php echo $datos->id; ?>" data-target="#EditarProductoModal">
 								Seleccionar
@@ -96,19 +94,19 @@ class Demandas extends CI_CONTROLLER
 		$referencia=$datos["txtReferencia"];
 
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado y una agencia";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
 		{
 			$datoCliente= array(
 				'Nombre'=>$nombre,
-				'Fecha'=>date("d-m-Y H:i:s ",strtotime($fecha)),
+				'Fecha'=>$fecha=='' ? null : date("d-m-Y H:i:s ",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
@@ -139,23 +137,24 @@ class Demandas extends CI_CONTROLLER
 		$Observaciones=$datos["txtUObservaciones"];
 		$referencia=$datos["txtUReferencia"];
 
-		if ($estado=="0" or $agencia=="0"){
+		if ($agencia=="0"){
 
 
 			$data = array();
 			$data['estado']=FALSE;
-			$data['descripcion']="Seleccione un estado y una agencia";
+			$data['descripcion']="Seleccione una agencia";
 			echo json_encode($data);
 		}
 		else
 		{
 			$datoCliente= array(
 				'Nombre'=>$nombre,
-				'Fecha'=>date("d-m-Y H:i:s ",strtotime($fecha)),
+				'Fecha'=>$fecha=='' ? null : date("d-m-Y H:i:s ",strtotime($fecha)),
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
-				"ReferenciaCaso"=>$referencia
+				"ReferenciaCaso"=>$referencia,
+					'fechaupd'=>date('d-m-Y H:i:s')
 			);
 			$where=array("id"=>$datos["txtid"]);
 			$res=$this->Demandas_Model->actualizarCliente($datoCliente,$where);
@@ -172,10 +171,11 @@ class Demandas extends CI_CONTROLLER
 
 	}
 
-
 	public function getInfo(){
 		$cliente=$this->Demandas_Model->obtenerCliente($this->input->post('id'));
-		$cliente[0]->Fecha = (date("Y-m-d",strtotime($cliente[0]->Fecha))).'T'.(date("H:i",strtotime($cliente[0]->Fecha)));
+		if ($cliente[0]->Fecha!=null){
+			$cliente[0]->Fecha = (date("Y-m-d",strtotime($cliente[0]->Fecha))).'T'.(date("H:i",strtotime($cliente[0]->Fecha)));
+		}
 		echo json_encode($cliente);
 	}
 

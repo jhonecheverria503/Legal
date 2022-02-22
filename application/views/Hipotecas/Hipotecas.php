@@ -126,7 +126,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado Finalizado de Tramite</label>
-								<select class="form-control estado" id="cmbTramite" name="cmbTramite" required="">
+								<select class="form-control estado" id="cmbTramite" name="cmbTramite" >
 									<option value="0">Seleccione...</option>
 									<option value="Operaciones">Entrega a Operaciones</option>
 									<option value="Cliente">Entregado a Cliente</option>
@@ -234,7 +234,7 @@
 						<div class="form-column col-md-4 col-sm-4 col-xs-4 col-lg-4">
 							<div class="form-group">
 								<label for="cliente" class="control-label">Estado Finalizado de Tramite</label>
-								<select class="form-control estado" id="cmbUTramite" name="cmbUTramite" required="">
+								<select class="form-control estado" id="cmbUTramite" name="cmbUTramite">
 									<option value="0">Seleccione...</option>
 									<option value="Operaciones">Entrega a Operaciones</option>
 									<option value="Cliente">Entregado a Cliente</option>
