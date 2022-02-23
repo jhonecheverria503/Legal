@@ -112,7 +112,7 @@ class Embargados extends CI_CONTROLLER
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
-				'Monto'=>doubleval($monto),
+				'Monto'=>$monto=='' ? null :doubleval($monto),
 				'Placa'=>$Placa
 			);
 
@@ -160,7 +160,7 @@ class Embargados extends CI_CONTROLLER
 				'Agencia'=>$agencia,
 				'Estado'=>$estado,
 				'Observaciones'=>$Observaciones,
-				'Monto'=>doubleval($monto),
+					'Monto'=>$monto=='' ? null :doubleval($monto),
 				'Placa'=>$Placa,
 					'fechaupd'=>date('d-m-Y H:i:s')
 			);

@@ -158,8 +158,8 @@ class Reportes_Model extends CI_MODEL
 			$sql="
 			DECLARE @fecha1  datetime
 			declare @fecha2 datetime 
-			SET @fecha1 = '$fecha1' 
-			SET @fecha2 ='$fecha2' 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT dd.id,dd.Nombre,dd.Fecha,
 			CASE 
 			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'
@@ -172,8 +172,8 @@ class Reportes_Model extends CI_MODEL
 			$sql="
 			DECLARE @fecha1  datetime
 			declare @fecha2 datetime 
-			SET @fecha1 = '$fecha1' 
-			SET @fecha2 ='$fecha2' 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT dd.id,dd.Nombre,dd.Fecha,
 			CASE 
 			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'
@@ -198,8 +198,8 @@ class Reportes_Model extends CI_MODEL
 			$sql="
 			DECLARE @fecha1  datetime
 			declare @fecha2 datetime 
-			SET @fecha1 = '$fecha1' 
-			SET @fecha2 ='$fecha2' 
+			SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT dd.id,dd.Nombre,dd.Fecha,
 			CASE 
 			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'
@@ -212,8 +212,8 @@ class Reportes_Model extends CI_MODEL
 			$sql="
 			DECLARE @fecha1  datetime
 			declare @fecha2 datetime 
-			SET @fecha1 = '$fecha1' 
-			SET @fecha2 ='$fecha2' 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT dd.id,dd.Nombre,dd.Fecha,
 			CASE 
 			WHEN dd.Estado='Contestacion' THEN 'Contestacion de denuncia'

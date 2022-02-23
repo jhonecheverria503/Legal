@@ -20,27 +20,37 @@ class ReportesPeH_Model extends CI_MODEL
 
 	public function getPrendas($fechainicio,$fechafin,$ccodofi)
 	{
+		$fecha1=date("Y-d-m",strtotime($fechainicio));
+		$fecha2=date("Y-d-m",strtotime($fechafin));
 		$sql="";
 		if ($ccodofi!=0){
 			$sql="	
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT cp.id,cp.Nombre,cp.Placa,cp.NumeroPresentacion,cp.FecOtor,cp.FechaLegal,cp.FechaCancelacion,
 			       CASE 
 					WHEN cp.Estado='Proceso' THEN 'En Proceso'
 					ELSE cp.Estado
-					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite
+					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite,cp.fechacrea
 		 	 FROM Cancelaciones_Prenda AS cp
 			JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=cp.Agencia
-			WHERE cp.fechacrea BETWEEN '$fechainicio' AND '$fechafin'AND  cp.Agencia='$ccodofi'";
+			WHERE cp.fechacrea BETWEEN @fecha1 AND '@fecha2 AND  cp.Agencia='$ccodofi'";
 		}else{
 			$sql="	
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT cp.id,cp.Nombre,cp.Placa,cp.NumeroPresentacion,cp.FecOtor,cp.FechaLegal,cp.FechaCancelacion,
 			       CASE 
 					WHEN cp.Estado='Proceso' THEN 'En Proceso'
 					ELSE cp.Estado
-					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite
+					END AS Estado,cp.Estado,t.cnomofi,cp.EstadoTramite,cp.Observaciones,cp.finalizacionTramite,cp.fechacrea
 		 	 FROM Cancelaciones_Prenda AS cp
 			JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=cp.Agencia
-			WHERE cp.fechacrea BETWEEN '$fechainicio' AND '$fechafin'";
+			WHERE cp.fechacrea BETWEEN @fecha1 AND @fecha2";
 		}
 
 		$query = $this->db->query($sql);
@@ -49,9 +59,15 @@ class ReportesPeH_Model extends CI_MODEL
 
 	public function getHipotecas($fechainicio,$fechafin,$ccodofi)
 	{
+		$fecha1=date("Y-d-m",strtotime($fechainicio));
+		$fecha2=date("Y-d-m",strtotime($fechafin));
 		$sql="";
 		if($ccodofi!=0){
-			$sql="	
+			$sql="
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+				SET @fecha1 = '$fecha1 00:00:00' 
+			SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT ch.id,ch.Nombre,ch.Placa,ch.NumeroPresentacion,
 			 CASE 
 			     WHEN ch.Estado='Proceso' THEN 'En Proceso' 
@@ -63,12 +79,16 @@ class ReportesPeH_Model extends CI_MODEL
 			     WHEN ch.EstadoTramite='Agencia' THEN 'Entregado a Agencia' 
 			     ELSE ch.EstadoTramite
 			     END AS EstadoTramite,
-				t.cnomofi,ch.Observaciones
+				t.cnomofi,ch.Observaciones,ch.fechacrea
 		 	 	FROM Cancelaciones_Hipotecas AS ch
 				JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=ch.Agencia
-				WHERE ch.fechacrea BETWEEN '$fechainicio' AND '$fechafin' AND ch.Agencia='$ccodofi'";
+				WHERE ch.fechacrea BETWEEN @fecha1 AND @fecha2 AND ch.Agencia='$ccodofi'";
 		}else{
 			$sql="	
+			DECLARE @fecha1  datetime
+			declare @fecha2 datetime 
+				SET @fecha1 = '$fecha1 00:00:00' 
+					SET @fecha2 ='$fecha2 23:59.59' 
 			SELECT ch.id,ch.Nombre,ch.Placa,ch.NumeroPresentacion,
 			    CASE 
 				WHEN ch.Estado='Proceso' THEN 'En Proceso' 
@@ -80,10 +100,10 @@ class ReportesPeH_Model extends CI_MODEL
 			     WHEN ch.EstadoTramite='Agencia' THEN 'Entregado a Agencia' 
 			     ELSE ch.EstadoTramite
 			     END AS EstadoTramite,
-				t.cnomofi,ch.Observaciones
+				t.cnomofi,ch.Observaciones,ch.fechacrea
 		 		 FROM Cancelaciones_Hipotecas AS ch
 				JOIN ASEIRTM.dbo.tabtofi AS t ON t.ccodofi=ch.Agencia
-				WHERE ch.fechacrea BETWEEN '$fechainicio' AND '$fechafin'";
+				WHERE ch.fechacrea BETWEEN @fecha1 AND @fecha2";
 		}
 
 		$query = $this->db->query($sql);
