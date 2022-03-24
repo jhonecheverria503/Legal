@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 //use Luecano\NumeroALetras\NumeroALetras;
@@ -236,6 +237,7 @@ class Cartas extends CI_CONTROLLER
 	}
 
 	public function printContrato(){
+
 		$datos=$this->input->get("idCliente");
 		$datosCliente=$this->Cartas_Model->getInfoContrato($datos);
 		$sexo=$datosCliente[0]->sexo;
@@ -267,11 +269,13 @@ class Cartas extends CI_CONTROLLER
 		require 'vendor/autoload.php';
 		$formatter = new \Luecano\NumeroALetras\NumeroALetras();
 		$DiasMora=($formatter->toWords($datosCliente[0]->DiasMora));
-		$Monto=($formatter->toWords($datosCliente[0]->Monto));
+		$montoentero=explode(".",$datosCliente[0]->Monto);
+		$Monto=($formatter->toWords($montoentero[0]));
 		//funcion explode extrae decimales posicion 0 es el entero y posicion 1 es el decimal
 		$fraccion=explode(".",$datosCliente[0]->Monto);
 		$parrafo1="que a esta fecha tiene mas de ".mb_strtolower($DiasMora)." dias mora y una deuda pendiente de cancelar por la cantidad total de ".$Monto." ".$fraccion[1]."/100 DOLARES DE LOS ESTADOS UNIDOS DE AMERICA ($".$datosCliente[0]->Monto.") nos vemos en la obligación de utilizar la documentación legal para exigir la totalidad del pago por la vía judicial, sin embargo, a efecto de interrumpir el proceso en la etapa que se encuentra requerimos su pago inmediato.";
 		$parrafo2="De no realizar su pago inmediato; y si a usted le interesa llegar a una CONCILIACION para solventar el caso, deberá presentarse el día ".$datosCliente[0]->dia. ", ".$datosCliente[0]->numero. " de ".$datosCliente[0]->Mes. " de ".$datosCliente[0]->anio." a las ".$hora.":".$minutos." ".$horario. " a nuestro departamento jurídico ubicado en CENTRO FINANCIERO ASEI: Colonia San Francisco, Calle Los Bambúes, #19, San Salvador, o cancelará lo adeudado.";
+
 		$data=array(
 		"Dui"=>$DUI,
 			"Nit"=>$NIT,
@@ -286,6 +290,8 @@ class Cartas extends CI_CONTROLLER
 		);
 
 		$this->load->view("Reportes/Carta",$data);
+
+
 		/*
 		require 'vendor/autoload.php';
 		$formatter = new \Luecano\NumeroALetras\NumeroALetras();
@@ -308,11 +314,14 @@ class Cartas extends CI_CONTROLLER
 		$spreadsheet->getActiveSheet()->setCellValue('C14', $NIT);
 		$spreadsheet->getActiveSheet()->setCellValue('B21', "que a esta fecha tiene mas de ".mb_strtolower($DiasMora)." dias mora y una deuda pendiente de cancelar por la cantidad total de ".$Monto." ".$fraccion[1]."/100 DOLARES DE LOS ESTADOS UNIDOS DE AMERICA ($".$datosCliente[0]->Monto.") nos vemos en la obligación de utilizar la documentación legal para exigir la totalidad del pago por la vía judicial, sin embargo, a efecto de interrumpir el proceso en la etapa que se encuentra requerimos su pago inmediato.");
 		$spreadsheet->getActiveSheet()->setCellValue('B29', "De no realizar su pago inmediato; y si a usted le interesa llegar a una CONCILIACION para solventar el caso, deberá presentarse el día ".$datosCliente[0]->dia. ", ".$datosCliente[0]->numero. " de ".$datosCliente[0]->Mes. " de ".$datosCliente[0]->anio." a las ".$hora.":".$minutos." ".$horario. " a nuestro departamento jurídico ubicado en CENTRO FINANCIERO ASEI: Colonia San Francisco, Calle Los Bambúes, #19, San Salvador, o cancelará lo adeudado.");
-		$writer = new Xlsx($spreadsheet);
+		//$writer = new Xlsx($spreadsheet);
 		$filename = 'Carta '.$nombre;
 
-		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"');
+		IOFactory::registerWriter('Pdf', \PhpOffice\PhpSpreadsheet\Writer\Pdf\Mpdf::class);
+
+		//header('Content-Type: application/vnd.ms-excel');
+		header('Content-Type: application/pdf');
+		header('Content-Disposition: attachment;filename="'. $filename .'.pdf"');
 		header('Cache-Control: max-age=0');
 
 		$dataBitacora = array(
@@ -324,9 +333,11 @@ class Cartas extends CI_CONTROLLER
 		);
 		$this->Bitacora_Model->insertAccion($dataBitacora);
 
+		$writer = IOFactory::createWriter($spreadsheet, 'Pdf');
+		//$mpdf->WriteHTML($spreadsheet);
+		//$mpdf->Output($nombre.'.pdf',\Mpdf\Output\Destination::DOWNLOAD);
 		$writer->save('php://output');
 		*/
-
 	}
 
 	public function changeHora($hora){

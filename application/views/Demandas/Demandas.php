@@ -20,7 +20,7 @@
 			<div class="form-column col-md-12 col-sm-12 col-xs-12 col-lg-12">
 				<div class="form-group">
 					<div>
-						<button class='btn btn-info' type="button" data-toggle="modal" data-target="#NuevoEmpleadoModal">
+						<button class='btn btn-danger' type="button" data-toggle="modal" data-target="#NuevoEmpleadoModal">
 							<i class="fas fa-user-plus"></i>
 							Ingresar Cliente
 						</button>
@@ -49,7 +49,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="NuevoEmpleadoModalLabel">Nuevo Cliente</h5>
+				<h5 class="modal-title" id="NuevoEmpleadoModalLabel">Demandas (Nuevo Cliente)</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -126,7 +126,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="NuevoEmpleadoModalLabel">Editar Cliente</h5>
+				<h5 class="modal-title" id="NuevoEmpleadoModalLabel">Demandas (Editar Cliente)</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
